@@ -1,0 +1,19 @@
+- name: Install packages
+  become: yes
+  ansible.builtin.pacman:
+    name: "{{item}}"
+    state: present
+  loop: "{{packages}}"
+- name: Enable libvirtd
+  become: yes
+  ansible.builtin.service:
+    name: libvirtd
+    enabled: true
+    state: started
+- name: Add user to libvirt group
+  become: yes
+  ansible.builtin.user:
+    append: true
+    name: "{{ ansible_user_id }}"
+    groups:
+      - libvirt
