@@ -13,7 +13,10 @@ bootstrap Arch linux with kvm/qemu and GPU passthrough
  > ip ink set vmbridge up
  > ip link set eno1 master vmbridge
  >```
+ >
  > And select "Network Source" "Bridge Device" and "Device Name" `vmbridge` in the VMs NIC 
+ > > However, this will "disable" the hosts networking. [The ArchLinux wikis article on setting up a bridge](https://wiki.archlinux.org/title/Network_bridge#Troubleshooting)
+ > > has some guides on how to fix this, but it didn't work me, as a workaround I connected my host to WIFI, which is fine for me.
 ```shell
 ansible-playbook playbook.yaml
 ``` 
